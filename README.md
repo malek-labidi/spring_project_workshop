@@ -39,4 +39,4 @@ This repository contains a comprehensive Spring project developed for the "Archi
 
 ## Swagger Documentation
 
-Explore the API using Swagger documentation: [Swagger Documentation]([#swagger-link](http://localhost:8083/springProject/swagger-ui/index.html)http://localhost:8083/springProject/swagger-ui/index.html)
+Explore the API using Swagger documentation: [Swagger Documentation](http://localhost:8083/springProject/swagger-ui/index.html)
