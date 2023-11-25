@@ -12,4 +12,5 @@ public interface IFoyerService {
     public Foyer updateFoyer(Foyer foyer);
     public void deleteFoyerById(long idFoyer);
     public List<Foyer> getFoyerByNomFoyer(String nomFoyer);
+    public Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer, long idUniversite) ;
 }

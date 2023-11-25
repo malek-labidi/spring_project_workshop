@@ -51,5 +51,9 @@ public class FoyerController {
     public List<Foyer> getFoyersByNomFoyer(@RequestParam String nomFoyer) {
         return foyerService.getFoyerByNomFoyer(nomFoyer);
     }
+    @PostMapping("/ajouterFoyerEtAffecterAUniversite/{idUniversite}")
+    public Foyer ajouterFoyerEtAffecterAUniversite (@RequestBody Foyer foyer,@PathVariable long idUniversite) {
+        return foyerService.ajouterFoyerEtAffecterAUniversite(foyer, idUniversite);
+    }
 
 }
