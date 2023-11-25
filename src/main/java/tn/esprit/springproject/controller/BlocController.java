@@ -64,4 +64,10 @@ public class BlocController {
     public void cronMethod() {
         log.info(blocService.getAllBloc().toString());
     }
+
+
+    @PutMapping("/add-chambres-to-bloc/{numChambre}/{idBloc}")
+    public Bloc affecterChambresABloc(@PathVariable List<Long> numChambre,@PathVariable long idBloc){
+        return blocService.affecterChambresABloc(numChambre, idBloc);
+    }
 }
