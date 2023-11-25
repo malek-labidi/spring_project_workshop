@@ -14,6 +14,7 @@ public interface IUniversiteService {
     public Universite getByNomUniversite(String nomUniversite);
     public Universite getByIdBloc(long idBloc);
     public Universite affecterFoyerAUniversite (long idFoyer, String nomUniversite) ;
+    public Universite desaffecterFoyerAUniversite (long idUniversite) ;
 
 
 }

@@ -58,4 +58,15 @@ public class UniversiteController {
     }
 
 
+    @PostMapping("/add-Foyer-to-University/{idFoyer}/{nom}")
+    public Universite ajouterFoyerAUniversite(@PathVariable("idFoyer") long idFoyer ,@PathVariable("nom") String nomUniversite) {
+        return universiteService.affecterFoyerAUniversite(idFoyer,nomUniversite);
+    }
+
+    @PutMapping("/delete-Foyer-from-University/{idUniversite}")
+    public Universite desaffecterFoyerAUniversite(@PathVariable("idUniversite")long idUniversite){
+        return universiteService.desaffecterFoyerAUniversite(idUniversite);
+    }
+
+
 }

@@ -3,7 +3,9 @@ package tn.esprit.springproject.Service;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.springproject.Entity.Foyer;
 import tn.esprit.springproject.Entity.Universite;
+import tn.esprit.springproject.Repository.IFoyerRepository;
 import tn.esprit.springproject.Repository.IUniversiteRepository;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.List;
 public class IUniversiteServiceImpl implements IUniversiteService {
     @Autowired
     private IUniversiteRepository universiteRepository;
+    private IFoyerRepository foyerRepository;
 
     @Override
     public Universite addUniversite(Universite universite) {
@@ -55,6 +58,28 @@ public class IUniversiteServiceImpl implements IUniversiteService {
 
     @Override
     public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
-        return null;
+        Foyer foyer = foyerRepository.findById(idFoyer).orElse(null);
+        Universite universite = getByNomUniversite(nomUniversite);
+
+        if (foyer != null && universite != null) {
+            universite.setFoyer(foyer);
+            foyer.setUniversite(universite);
+            universiteRepository.save(universite);
+            foyerRepository.save(foyer);
+        }
+
+        return universite;
+    }
+
+    @Override
+    public Universite desaffecterFoyerAUniversite(long idUniversite) {
+        Universite universite = universiteRepository.findById(idUniversite).orElse(null);
+
+        if (universite != null) {
+            Foyer foyer = universite.getFoyer();
+            foyer.setUniversite(null);
+            universite.setFoyer(null);
+        }
+        return universite;
     }
 }
