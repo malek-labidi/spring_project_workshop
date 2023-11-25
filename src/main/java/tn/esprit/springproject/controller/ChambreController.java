@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.Entity.Chambre;
+import tn.esprit.springproject.Entity.TypeChambre;
 import tn.esprit.springproject.Service.IChambreService;
 
 import java.util.List;
@@ -50,4 +51,15 @@ public class ChambreController {
     public List<Chambre> getChambreByNumero(long numeroChambre,String nomBloc){
         return chambreService.getChambreByNumero(numeroChambre, nomBloc);
     }
+
+    @GetMapping("/ByNomUniversite/{nomUniversite}")
+    public List<Chambre> getChambresParNomUniversite(@PathVariable String nomUniversite) {
+        return chambreService.getChambresParNomUniversite(nomUniversite);
+    }
+
+    @GetMapping("/getChambresParBlocEtType/{idBloc}/{typeC}")
+    List<Chambre> getChambresParBlocEtType(@PathVariable long idBloc ,@PathVariable TypeChambre typeC){
+        return chambreService.getChambresParBlocEtType(idBloc, typeC);
+    }
+
 }
